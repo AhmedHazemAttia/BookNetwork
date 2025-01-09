@@ -1,6 +1,5 @@
 package com.Ahmed.book.auth;
 
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -9,20 +8,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @Builder
-public class RegistrationRequest {
-    @NotEmpty(message = "Firstname can't be Empty")
-    @NotBlank(message = "Firstname can't be Empty")
-    private String firstname;
-    @NotEmpty(message = "Lastname can't be Empty")
-    @NotBlank(message = "Lastname can't be Empty")
-    private String lastname;
+public class AuthenticationRequest {
+
     @Email(message = "Email is in a wrong Format (***@****.com")
-    @NotEmpty(message = " can't be Empty")
-    @NotBlank(message = " can't be Empty")
     private String email;
     @NotEmpty(message = "Firstname can't be Empty")
     @NotBlank(message = "Firstname can't be Empty")
