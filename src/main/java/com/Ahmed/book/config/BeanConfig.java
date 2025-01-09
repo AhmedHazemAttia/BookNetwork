@@ -15,10 +15,6 @@ public class BeanConfig {
 
     private final UserDetailsService userDetailsService;
 
-    public BeanConfig(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
-    }
-
     @Bean
     public AuthenticationProvider authenticationProvider(){
 
