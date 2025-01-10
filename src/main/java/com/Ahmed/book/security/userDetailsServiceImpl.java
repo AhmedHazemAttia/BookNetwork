@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class userDetailsServiceImpl implements UserDetailsService {
 
-    private UserRepository repository;
+    private final UserRepository repository;
 
     @Override
     @Transactional

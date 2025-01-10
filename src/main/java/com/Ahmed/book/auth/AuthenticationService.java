@@ -97,20 +97,28 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        var auth = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+        try {
+            var auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail(),
+                            request.getPassword()
+                    )
+            );
+
         var claims = new HashMap<String, Object>();
         var user = ((User)auth.getPrincipal());
 
         claims.put("fullName", user.fullName());
 
-        var jwtToken = jwtService.generateToken(claims, user);
-        System.out.println(jwtToken);
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
+
+        return AuthenticationResponse.builder()
+                        .token(jwtToken)
+                        .build();
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the exception for debugging
+            throw new RuntimeException("Authentication failed: " + e.getMessage(), e);
+        }
     }
 
 
