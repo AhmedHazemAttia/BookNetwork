@@ -21,8 +21,8 @@ public class RegistrationRequest {
     @NotBlank(message = "Lastname can't be Empty")
     private String lastname;
     @Email(message = "Email is in a wrong Format (***@****.com")
-    @NotEmpty(message = " can't be Empty")
-    @NotBlank(message = " can't be Empty")
+    @NotEmpty(message = " Email can't be Empty")
+    @NotBlank(message = "Email can't be Empty")
     private String email;
     @NotEmpty(message = "Firstname can't be Empty")
     @NotBlank(message = "Firstname can't be Empty")
